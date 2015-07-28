@@ -98,6 +98,8 @@ function Runner(appJsConfig, cb) {
     return require('./lib/hapi_middleware')(this);
   };
 
+  _.merge(appPaths, _.pick(appJsConfig, _.keys(appPaths)));
+  
   var configDir = path.resolve(appJsConfig.appRoot, appJsConfig.configDir || appPaths.configDir);
   var fileConfig = readConfigFile(path.resolve(configDir, 'default.yaml'));
 
